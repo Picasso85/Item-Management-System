@@ -1,0 +1,19 @@
+﻿@foreach (var inv in Inventories)
+{
+    <tr>
+        <td>@inv.InventoryId</td>
+        <td>@inv.InventoryName</td>
+        <td>@inv.Quantity</td>
+        <td>@inv.Price.ToString("c")</td>
+        <td>
+            <button type="button" class="btn btn-info">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+    </tr>
+}
+
+@code {
+    [Parameter]
+    public List<Inventory> Inventories { get; set; } = new List<Inventory>();
+
+}

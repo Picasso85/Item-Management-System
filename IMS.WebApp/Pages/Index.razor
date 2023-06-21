@@ -1,0 +1,24 @@
+﻿
+@page "/"
+
+@inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
+
+<PageTitle>Test Page</PageTitle>
+<br/>
+<ul>
+    @foreach(var inv in _inventories)
+    {
+    <li>
+        @inv.InventoryName
+    </li>
+    }
+</ul>
+
+@code {
+    private List<Inventory> _inventories = new List<Inventory>();
+
+    protected override async Task OnInitializedAsync()
+    {
+       _inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync()).ToList();
+    }
+}
