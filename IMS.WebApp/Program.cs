@@ -16,6 +16,8 @@ builder.Services.AddSingleton<IInventoryRepository, InventoryRepository>();
 builder.Services.AddTransient<IViewInventoriesByNameUseCase, ViewInventoriesByNameUseCase>();
 // service to fix issues with SignalR (F5 - refresh - issue) ... Microsoft is like....
 builder.Services.AddScoped<IViewInventoriesByNameUseCase, ViewInventoriesByNameUseCase>();
+builder.Services.AddTransient<IAddInventoryUseCase, AddInventoryUseCase>();
+builder.Services.AddTransient<IEditInventoryUseCase, EditInventoryUseCase>();
 
 var app = builder.Build();
 

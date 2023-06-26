@@ -1,0 +1,26 @@
+﻿@inject NavigationManager NavigationManager
+
+@if (Inventories != null && Inventories.Count > 0)
+{
+    foreach (var inv in Inventories)
+    {
+        <tr>
+            <td>@inv.InventoryId</td>
+            <td>@inv.InventoryName</td>
+            <td>@inv.Quantity</td>
+            <td>@inv.Price.ToString("c")</td>
+            <td>
+                <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i>Delete</button>
+                </div>
+            </td>
+        </tr>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<Inventory> Inventories { get; set; } = new List<Inventory>();
+
+}
