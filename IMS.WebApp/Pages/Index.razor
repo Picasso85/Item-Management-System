@@ -25,9 +25,9 @@
     {
         _inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync()).ToList();
 
-        var inventory = new Inventory { InventoryId = 1, InventoryName = "Laptop X-2343", Quantity = 120, Price = 999.99 };
+        //var inventory = new Inventory { InventoryId = 1, InventoryName = "Laptop X-2343", Quantity = 120, Price = 999.99 };
 
-        await EditInventoryUseCase.ExecuteAsync(inventory);
+        //await EditInventoryUseCase.ExecuteAsync(inventory);
 
        _inventories = (await ViewInventoriesByNameUseCase.ExecuteAsync()).ToList();
     }
