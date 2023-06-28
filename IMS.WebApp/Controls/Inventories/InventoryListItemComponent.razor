@@ -30,20 +30,6 @@
         NavigationManager.NavigateTo($"/editInventory/{inventoryId}");
     }
 
-    //private void RemoveItem(int Inventory) => Inventories.RemoveAt(Inventory);
-
-    //private void RemoveItem(int inventoryId)
-    //{
-    //    var index = Inventories.FindIndex(inv => inv.InventoryId == inventoryId);
-    //    if (index != -1)
-    //    {
-    //        var confirm = window.Confirm("Are you sure you want to delete this item?");
-    //        if (confirm)
-    //        {
-    //            Inventories.RemoveAt(index);
-    //        }
-    //    }
-    //}
     private async Task RemoveItem(int inventoryId)
     {
         var index = Inventories.FindIndex(inv => inv.InventoryId == inventoryId);
