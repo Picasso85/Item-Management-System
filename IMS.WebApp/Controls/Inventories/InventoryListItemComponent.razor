@@ -12,8 +12,8 @@
             <td>@inv.Price.ToString("c")</td>
             <td>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                    <button type="button" class="btn btn-sm btn-outline-primary" @onclick="(() => EditInventory(inv.Id))"><i class="bi bi-pencil-square">Edit</i></button>
-                    <button type="button" class="btn btn-sm btn-danger" @onclick="() => RemoveItem(inv.Id)"><i class="bi bi-trash"></i>Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" @onclick="(() => EditInventory(inv.Id))"><i class="bi bi-pencil-square" style="padding:0 0.5rem 0 0;"></i>Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger" @onclick="() => RemoveItem(inv.Id)"><i class="bi bi-trash" style="padding:0 0.5rem 0 0;"></i>Delete</button>
                 </div>
             </td>
         </tr>

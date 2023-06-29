@@ -8,8 +8,7 @@
 
 @code {
     [Parameter]
-    public int ItemsPerPage { get; set; } = 20;
-
+    public int ItemsPerPage { get; set; } = 10;
     [Parameter]
     public List<object> Items { get; set; }
     [Parameter]
@@ -36,8 +35,6 @@
             _currentPage--;
 
             await CurrentPage.InvokeAsync(_currentPage);
-
         }
     }
-
 }

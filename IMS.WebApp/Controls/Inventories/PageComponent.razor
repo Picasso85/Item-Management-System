@@ -4,7 +4,7 @@
 <nav aria-label="...">
     <ul class="pagination gap-1 align-items-center">
         <li class="page-item disabled">
-            <button class="btn btn-primary" disabled="@(!CanGoPrevious)" @onclick="GoToPreviousPage">Previous</button>
+            <button class="btn btn-primary" disabled="@(!CanGoPrevious)" @onclick="GoToPreviousPage"><i class="bi bi-arrow-left-square paddingIconRight" @*style="padding:0 0.5rem 0 0;" *@></i>Previous</button>
         </li>
         @for (var i = 0; i < TotalPages; i++)
         {
@@ -15,13 +15,12 @@
             </li>
         }
         <li class="page-item">
-            <button class="btn btn-primary" disabled="@(!CanGoNext)" @onclick="GoToNextPage">Next</button>
+            <button class="btn btn-primary" disabled="@(!CanGoNext)" @onclick="GoToNextPage">Next<i class="bi bi-arrow-right-square " style="padding:0 0 0 0.5rem;"></i></button>
         </li>
     </ul>
 </nav>
 
 @code {
-
     public int ItemsPerPage => InventoryRepository.ItemsPerPage;
     private int Index { get; set; }
     [Parameter]

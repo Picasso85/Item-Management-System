@@ -7,7 +7,7 @@
 @attribute [Authorize(Policy = "Inventory")]
 
 <h3>Add Product</h3>
-<br/>
+    <br/>
 
     
             <EditForm Model="product" OnValidSubmit="SaveProduct">
@@ -106,8 +106,6 @@
     </thead>
 </table>
 </EditForm>
-
-
 @code {
     private Product product = new Product();
 
