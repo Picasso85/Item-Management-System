@@ -14,7 +14,7 @@ You Edit Item Id :@InvId
     <ValidationSummary></ValidationSummary>
     <div class="form-group">
         <label for"name">Inventory Name</label>
-        <InputText id="name" @bind-Value="inventory.InventoryName" class="form-control"></InputText>
+        <InputText id="name" @bind-Value="inventory.Name" class="form-control"></InputText>
     </div>
     <div class="form-group">
         <label for"quantity">Quantity</label>
@@ -35,7 +35,7 @@ You Edit Item Id :@InvId
     [Parameter]
     public int InvId { get; set; }
 
-    private Inventory inventory = new Inventory();
+    private InventoryItem inventory = new InventoryItem();
 
     protected override async Task OnParametersSetAsync()
     {

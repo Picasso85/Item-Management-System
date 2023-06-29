@@ -5,14 +5,17 @@
 
 <h3>Product List</h3>
 <br/>
-
 <SearchProductComponent OnSearchProduct="OnSearchProduct">
 </SearchProductComponent>
 <br/>
 Search Term: @searchTerm
-<ProductListComponent SearchTerm="@searchTerm"></ProductListComponent>
 <br/>
 <button type="button" class="btn btn-primary" @onclick="AddProduct">Add Product</button>
+<br />
+<ProductListComponent SearchTerm="@searchTerm"></ProductListComponent>
+<PageComponent></PageComponent>
+
+
 
 
 @code {
@@ -27,4 +30,5 @@ Search Term: @searchTerm
     {
         NavigationManager.NavigateTo("/addProduct");
     }
+
 }

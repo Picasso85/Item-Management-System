@@ -17,12 +17,12 @@ namespace IMS.Plugins.InMemory
         {
             _products = new List<Product>()
             {
-                new Product() { ProductId = 1, ProductName = "Custom PC-CR1000", Quantity = 4, Price= 1199 },
-                new Product() { ProductId = 2, ProductName = "Custom PC-CR2000", Quantity = 2, Price = 1299 },
-                new Product() { ProductId = 3, ProductName = "Custom PC-CR3000", Quantity = 7, Price = 1599 },
-                new Product() { ProductId = 4, ProductName = "Custom PC-CR4000", Quantity = 3, Price = 1699 },
-                new Product() { ProductId = 5, ProductName = "Custom PC-CR5000", Quantity = 6, Price= 1799 },
-                new Product() { ProductId = 6, ProductName = "Custom PC-CR6000", Quantity = 3, Price= 1299 }
+                new Product() { ProductId = 1, ProductName = "Custom PC-CR1000", Quantity = 4, Price= 2199 },
+                new Product() { ProductId = 2, ProductName = "Custom PC-CR2000", Quantity = 2, Price = 2299 },
+                new Product() { ProductId = 3, ProductName = "Custom PC-CR3000", Quantity = 7, Price = 2599 },
+                new Product() { ProductId = 4, ProductName = "Custom PC-CR4000", Quantity = 3, Price = 2699 },
+                new Product() { ProductId = 5, ProductName = "Custom PC-CR5000", Quantity = 6, Price= 2799 },
+                new Product() { ProductId = 6, ProductName = "Custom PC-CR6000", Quantity = 3, Price= 2299 }
             };
         
         }

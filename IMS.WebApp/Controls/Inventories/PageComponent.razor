@@ -1,26 +1,63 @@
-﻿<nav aria-label="...">
-    <ul class="pagination">
+﻿@inject IInventoryRepository InventoryRepository
+
+
+<nav aria-label="...">
+    <ul class="pagination gap-1 align-items-center">
         <li class="page-item disabled">
-            <span class="page-link">Previous</span>
+            <button class="btn btn-primary" disabled="@(!CanGoPrevious)" @onclick="GoToPreviousPage">Previous</button>
         </li>
-        <li class="page-item active">
-            <span class="page-link">
-                
-                <span class="sr-only">1</span>
-            </span>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
-        <li class="page-item"><a class="page-link" href="#">6</a></li>
-        <li class="page-item"><a class="page-link" href="#">7</a></li>
+        @for (var i = 0; i < TotalPages; i++)
+        {
+            var index = i;
+
+            <li class="page-item">
+                <button class="btn btn-sm  @(_currentPage == index ? "btn-primary" : "btn-outline-primary")" disabled="@(index == _currentPage)" @onclick="() => GoToPage(index)">@(index + 1)</button>
+            </li>
+        }
         <li class="page-item">
-            <a class="page-link" href="#">Next</a>
+            <button class="btn btn-primary" disabled="@(!CanGoNext)" @onclick="GoToNextPage">Next</button>
         </li>
     </ul>
 </nav>
 
 @code {
+
+    public int ItemsPerPage => InventoryRepository.ItemsPerPage;
+    private int Index { get; set; }
+    [Parameter]
+    public List<object> Items { get; set; } = new List<object>();
+    [Parameter]
+    public EventCallback<int> CurrentPage { get; set; }
+    private bool CanGoNext => _currentPage < TotalPages - 1;
+    private bool CanGoPrevious => _currentPage > 0;
+    private int _currentPage { get; set; } = 0;
+    private int TotalPages => InventoryRepository.GetMaxPageCount();
+
+    private async Task GoToNextPage()
+    {
+        if (_currentPage <= TotalPages - 1)
+        {
+            _currentPage++;
+
+            await CurrentPage.InvokeAsync(_currentPage);
+        }
+    }
+
+    private async Task GoToPreviousPage()
+    {
+        if (_currentPage > 0)
+        {
+            _currentPage--;
+
+            await CurrentPage.InvokeAsync(_currentPage);
+
+        }
+    }
+
+    private async Task GoToPage(int pageNumber)
+    {
+        _currentPage = pageNumber;
+        await CurrentPage.InvokeAsync(pageNumber);
+    }
 
 }

@@ -7,6 +7,34 @@
         <td>@prod.ProductName</td>
         <td>@prod.Quantity</td>
         <td>@prod.Price.ToString("c")</td>
+        <td>@prod.Description
+            <tr>
+                <td>
+                <ul>
+                    <li>Case</li>
+                    <li>CPU</li>
+                    <li>Motherboard</li>
+                    <li>Graphic card</li>
+                    <li>Memmory</li>
+                    <li>Hdd</li>
+                    <li>Power Supply</li>
+                </ul>
+                </td>
+        <td>
+            <ul>
+                <li>:@prod.Case</li>
+                <li>:@prod.Cpu</li>
+                <li>:@prod.Motherboard</li>
+                <li>:@prod.GraphicCard</li>
+                <li>:@prod.Memmory</li>
+                <li>:@prod.Hdd</li>
+                <li>:@prod.PowerSupply</li>
+            </ul>
+        </td>
+            </tr>
+       
+        
+        </td>
         <td>
             <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                 <button type="button" class="btn btn-sm btn-outline-primary" ><i class="bi bi-pencil-square">Edit</i></button>
@@ -24,6 +52,5 @@
     {
         NavigationManager.NavigateTo($"/editInventory/{inventoryId}");
     }
-
     
 }

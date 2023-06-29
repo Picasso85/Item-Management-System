@@ -2,12 +2,12 @@
 
 namespace IMS.CoreBusiness
 {
-    public class Inventory
+    public class InventoryItem
     {
-        public int InventoryId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string InventoryName { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be greater or equal to 1")]
         public int Quantity { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Price must be greater or equal to 1")]

@@ -1,20 +1,28 @@
 ﻿@page "/inventories"
 @inject NavigationManager NavigationManager
+@inject IInventoryRepository InventoryRepository
 
 <h3>Inventory List</h3>
 <br/>
 <SearchInventoryComponent OnSearchInventory="OnInventorySearch"> 
 </SearchInventoryComponent>
-<br/>
 Search Term: @searchTerm
-
-<InventoryListComponent SearchTerm="@searchTerm"></InventoryListComponent>
 <br/>
 <button type="button" class="btn btn-primary" @onclick="AddInventory">Add Inventory</button>
 <br/>
+<InventoryListComponent ListInventories="@Items"></InventoryListComponent>
+<PageComponent CurrentPage="OnCurrentPageChange"></PageComponent>
+
 
 @code {
     private string searchTerm = string.Empty;
+
+    private List<InventoryItem> Items { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await OnCurrentPageChange(0);
+    }
 
     private void OnInventorySearch(string searchTerm)
     {
@@ -25,4 +33,22 @@ Search Term: @searchTerm
     {
         NavigationManager.NavigateTo("/addinventory");
     }
+
+    private async Task OnCurrentPageChange(int currentPage)
+    {
+        var result = InventoryRepository.GetPageByNameAsync(string.Empty, currentPage);
+
+        await result;
+
+        if (result.IsCompleted)
+
+        {
+            Items = result.Result.ToList();
+            await InvokeAsync(StateHasChanged);
+
+        }
+    }
+
+
+
 }

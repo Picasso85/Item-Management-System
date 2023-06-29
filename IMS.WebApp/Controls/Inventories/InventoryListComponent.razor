@@ -11,19 +11,19 @@
         </tr>
     </thead>
     <tbody>
-        <InventoryListItemComponent Inventories="listInventories"></InventoryListItemComponent>
+        <InventoryListItemComponent Inventories="ListInventories"></InventoryListItemComponent>
     </tbody>
 </table>
 
 
 @code {
-    private List<Inventory> listInventories = new List<Inventory>();
 
     [Parameter]
-    public string SearchTerm { get; set; } = string.Empty;
+
+    public List<InventoryItem> ListInventories { get; set; } = new List<InventoryItem>();
 
     protected override async Task OnParametersSetAsync()
     {
-        listInventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
+        await InvokeAsync(StateHasChanged);
     }
 }

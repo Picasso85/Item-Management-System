@@ -16,5 +16,17 @@ namespace IMS.CoreBusiness
         public int Quantity { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Price must be greater or equal to 1")]
         public double Price { get; set; }
+        public string Description { get; set; }
+
+        //components
+
+        public string Cpu { get; set; }
+        public string Case { get; set; }
+        public string Memmory { get; set; }
+        public string Hdd { get; set; }
+        public string PowerSupply { get; set; }
+        public string Motherboard { get; set; }
+        public string GraphicCard { get; set; }
+
     }
 }
