@@ -8,5 +8,12 @@
 }
 
 .paddingIcon {
-    padding: 0 0.5rem;
+    padding: 0.5rem 0.5rem;
+}
+
+.DropDown {
+    overflow-y: auto;
+    max-height: 15rem;
+    border: 1px solid silver;
+    padding-top: 1rem
 }

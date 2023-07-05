@@ -1,45 +1,29 @@
 ﻿@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 
-@foreach(var prod in Products)
+@foreach (var prod in Products)
 {
     <tr>
         <td>@prod.ProductId</td>
         <td>@prod.ProductName</td>
         <td>@prod.Quantity</td>
         <td>@prod.Price.ToString("c")</td>
-        <td>@prod.Description
-            <tr>
-                <td>
-                <ul>
-                    <li>Case</li>
-                    <li>CPU</li>
-                    <li>Motherboard</li>
-                    <li>Graphic card</li>
-                    <li>Memmory</li>
-                    <li>Hdd</li>
-                    <li>Power Supply</li>
-                </ul>
-                </td>
         <td>
-            <ul>
-                <li>:@prod.Case</li>
-                <li>:@prod.Cpu</li>
-                <li>:@prod.Motherboard</li>
-                <li>:@prod.GraphicCard</li>
-                <li>:@prod.Memmory</li>
-                <li>:@prod.Hdd</li>
-                <li>:@prod.PowerSupply</li>
-            </ul>
-        </td>
-            </tr>
-       
-        
+            @prod.Cpu
+            @prod.Motherboard
+            @prod.Case
+            @prod.SSD
+            @prod.Memmory
+            @prod.GraphicCard
+            @prod.PowerSupply
         </td>
         <td>
-            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                <button type="button" class="btn btn-sm btn-outline-primary" ><i class="bi bi-pencil-square" style="padding:0 0.5rem 0 0;"></i>Edit</button>
-            <button type="button" class="btn btn-sm btn-danger" style="padding:0 0.5rem 0 0;"><i class="bi bi-trash" style="padding:0 0.5rem 0 0.5rem;"></i>Delete</button>
-            </div>
+            <button 
+                type="button" 
+                class="btn btn-sm btn-outline-primary paddingIcon"
+                @onclick="@(() =>EditProduct(prod))"
+            ><i class="bi bi-pencil-square"></i></button>
+            <button type="button" class="btn btn-sm btn-danger paddingIcon" @onclick="() => RemoveProduct(prod)"><i class=" bi bi-trash"></i></button>
         </td>
     </tr>
 }
@@ -48,9 +32,20 @@
     [Parameter]
     public List<Product> Products { get; set; } = new List<Product>();
 
-    private void EditInventory(int inventoryId)
+    private void EditProduct(Product product)
     {
-        NavigationManager.NavigateTo($"/editInventory/{inventoryId}");
+        NavigationManager.NavigateTo($"/editproduct/{product.ProductId}");
+    }
+
+    //private void RemoveInventory(ProductInventory productInventory)
+    //{
+    //    this.Product.ProductInventories.Remove(productInventory);
+    //}
+
+    private void RemoveProduct(Product product)
+    {
+        Products.Remove(product);
     }
     
+
 }

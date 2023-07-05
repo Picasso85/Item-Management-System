@@ -1,14 +1,15 @@
-﻿@page "/addproduct"
+﻿@page "/editproduct/{id:int}"
 
+@inject IViewProductByIdUseCase ViewProductByIdUseCase
 @inject NavigationManager NavigationManager
-@inject IAddProductUseCase AddProductUseCase
-@inject IJSRuntime js
+@inject IEditProductUseCase EditProductUseCase 
 
-@attribute [Authorize(Policy = "Inventory")]
+<h3>Edit Product</h3>
+<br />
 
-<h3>Add Product</h3>
-    <br/> 
-<EditForm Model="product" OnValidSubmit="SaveProduct">
+@if (this.product != null)
+{
+    <EditForm Model="product" OnValidSubmit="SaveProduct">
     <button type="submit" class="btn btn-sm btn-primary">Save</button>
     <button type="button" class="btn btn-sm btn-primary" @onclick="Cancel">Cancel</button>    
     <table class="table table-responsive-sm">
@@ -28,7 +29,7 @@
                     id="name" 
                     @bind-Value="product.ProductName"
                     class="form-control">
-                    </InputText>
+                </InputText>
                 </div>
             </td>
             
@@ -88,13 +89,16 @@
     </tbody>
 </table>      
 </EditForm>
+}
 @code {
-    private Product product = new Product();
+    private Product? product;
 
-    private async Task SaveProduct()
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnParametersSetAsync()
     {
-        await AddProductUseCase.ExecuteAsync(product);
-        NavigationManager.NavigateTo("/products");
+        this.product = await ViewProductByIdUseCase.ExecuteAsync(this.Id);
     }
 
     private void Cancel()
@@ -102,13 +106,25 @@
         NavigationManager.NavigateTo("/products");
     }
 
-    protected async override Task OnAfterRenderAsync(bool firstrender)
+    private async Task SaveProduct()
     {
-        if (firstrender)
+        if (this.product != null)
         {
-            await js.InvokeVoidAsync("focusById", "name");
+            await EditProductUseCase.ExecuteAsync(this.product);    
         }
+        NavigationManager.NavigateTo("/products");
     }
 
+    [Parameter]
+    public Product Product { get; set; } = new Product();
 
+    private void RemoveInventory(ProductInventory productInventory)
+    {
+        this.Product.ProductInventories.Remove(productInventory);
+    }
+
+    private void OnInventorySelected(Inventory inventory)
+    {
+        this.Product.AddInventory(inventory);
+    }
 }

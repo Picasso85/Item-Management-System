@@ -6,18 +6,18 @@
 <br/>
 <SearchInventoryComponent OnSearchInventory="OnInventorySearch"> 
 </SearchInventoryComponent>
-Search Term: @searchTerm
 <br/>
 <button type="button" class="btn btn-primary" @onclick="AddInventory"><i class="bi bi-plus-square" style="padding:0 0.5rem 0 0;"></i>Add Inventory</button>
 <br/>
-<InventoryListComponent ListInventories="@Items"></InventoryListComponent>
+<InventoryListComponent SearchTerm="@searchTerm" ListInventories="@items"></InventoryListComponent>
 <PageComponent CurrentPage="OnCurrentPageChange"></PageComponent>
 
 
 @code {
-    private string searchTerm = string.Empty;
 
-    private List<InventoryItem> Items { get; set; } = new();
+    private List<Inventory> items { get; set; } = new();
+
+    private string searchTerm = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -43,7 +43,7 @@ Search Term: @searchTerm
         if (result.IsCompleted)
 
         {
-            Items = result.Result.ToList();
+            items = result.Result.ToList();
             await InvokeAsync(StateHasChanged);
 
         }

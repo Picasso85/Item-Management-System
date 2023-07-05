@@ -4,7 +4,7 @@
 <nav aria-label="...">
     <ul class="pagination gap-1 align-items-center">
         <li class="page-item disabled">
-            <button class="btn btn-primary" disabled="@(!CanGoPrevious)" @onclick="GoToPreviousPage"><i class="bi bi-arrow-left-square paddingIconRight" @*style="padding:0 0.5rem 0 0;" *@></i>Previous</button>
+            <button class="btn btn-primary" disabled="@(!CanGoPrevious)" @onclick="GoToPreviousPage"><i class="bi bi-arrow-left-square paddingIconRight"></i>Previous</button>
         </li>
         @for (var i = 0; i < TotalPages; i++)
         {
@@ -21,15 +21,28 @@
 </nav>
 
 @code {
+
     public int ItemsPerPage => InventoryRepository.ItemsPerPage;
+
     private int Index { get; set; }
+
+
     [Parameter]
+
     public List<object> Items { get; set; } = new List<object>();
+
+    
+
     [Parameter]
+
     public EventCallback<int> CurrentPage { get; set; }
+
     private bool CanGoNext => _currentPage < TotalPages - 1;
+
     private bool CanGoPrevious => _currentPage > 0;
+
     private int _currentPage { get; set; } = 0;
+
     private int TotalPages => InventoryRepository.GetMaxPageCount();
 
     private async Task GoToNextPage()

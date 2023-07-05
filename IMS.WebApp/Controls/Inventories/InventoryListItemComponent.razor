@@ -6,15 +6,14 @@
     foreach (var inv in Inventories)
     {
         <tr>
-            <td>@inv.Id</td>
-            <td>@inv.Name</td>
+            <td>@inv.InventoryId</td>
+            <td>@inv.Type</td>
+            <td>@inv.InventoryName</td>
             <td>@inv.Quantity</td>
             <td>@inv.Price.ToString("c")</td>
             <td>
-                <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                    <button type="button" class="btn btn-sm btn-outline-primary" @onclick="(() => EditInventory(inv.Id))"><i class="bi bi-pencil-square" style="padding:0 0.5rem 0 0;"></i>Edit</button>
-                            <button type="button" class="btn btn-sm btn-danger" @onclick="() => RemoveItem(inv.Id)"><i class="bi bi-trash" style="padding:0 0.5rem 0 0;"></i>Delete</button>
-                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary paddingIcon" @onclick="(() => EditInventory(inv.InventoryId))"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-sm btn-danger paddingIcon" @onclick="() => RemoveItem(inv.InventoryId)"><i class="bi bi-trash"></i></button>
             </td>
         </tr>
     }
@@ -23,7 +22,7 @@
 @code {
     [Parameter]
 
-    public List<InventoryItem> Inventories { get; set; } = new List<InventoryItem>();
+    public List<Inventory> Inventories { get; set; } = new List<Inventory>();
 
     private void EditInventory(int inventoryId)
 
@@ -34,7 +33,7 @@
     private async Task RemoveItem(int inventoryId)
 
     {
-        var index = Inventories.FindIndex(inv => inv.Id == inventoryId);
+        var index = Inventories.FindIndex(inv => inv.InventoryId == inventoryId);
 
         if (index != -1)
         {

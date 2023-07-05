@@ -4,6 +4,6 @@ namespace IMS.UseCases.Inventories.Interfaces
 {
     public interface IViewInventoryByIdUseCase
     {
-        Task<InventoryItem> ExecuteAsync(int inventoryId);
+        Task <Inventory> ExecuteAsync(int inventoryId);
     }
 }

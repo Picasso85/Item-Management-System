@@ -13,13 +13,13 @@
     @foreach(var inv in _inventories)
     {
     <li>
-        @inv.Name
+        @inv.InventoryName
     </li>
     }
 </ul>
 
 @code {
-    private List<InventoryItem> _inventories = new List<InventoryItem>();
+    private List<Inventory> _inventories = new List<Inventory>();
 
     protected override async Task OnInitializedAsync()
     {
