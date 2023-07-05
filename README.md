@@ -1,4 +1,5 @@
-i like cooments but i dont like write comment:P just work and progress..  
+i like comments but i dont like write comments
+:P just work and progress..  
 
 app about inventory system plus some extra stuff :P
 
