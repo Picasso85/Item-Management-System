@@ -7,7 +7,7 @@
 @attribute [Authorize(Policy = "Inventory")]
 
 <h3>Add Product</h3>
-    <br/> 
+<br/> 
 <EditForm Model="product" OnValidSubmit="SaveProduct">
     <button type="submit" class="btn btn-sm btn-primary">Save</button>
     <button type="button" class="btn btn-sm btn-primary" @onclick="Cancel">Cancel</button>    
@@ -61,7 +61,6 @@
                     </InputNumber>
                 </div>
             </td>
-            
         </tr>
         <tr>
             <td rowspan="20">
@@ -88,7 +87,8 @@
     </tbody>
 </table>      
 </EditForm>
-@code {
+@code 
+{
     private Product product = new Product();
 
     private async Task SaveProduct()
@@ -109,6 +109,4 @@
             await js.InvokeVoidAsync("focusById", "name");
         }
     }
-
-
 }

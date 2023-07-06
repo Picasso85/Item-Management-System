@@ -1,4 +1,6 @@
 using IMS.Plugins.InMemory;
+using IMS.UseCases.Activities;
+using IMS.UseCases.Activities.Interfaces;
 using IMS.UseCases.Inventories;
 using IMS.UseCases.Inventories.Interfaces;
 using IMS.UseCases.PluginInterfaces;
@@ -27,6 +29,10 @@ builder.Services.AddTransient<IViewProductsByNameUseCase, ViewProductsByNameUseC
 builder.Services.AddTransient<IAddProductUseCase, AddProductUseCase>();
 builder.Services.AddTransient<IViewProductByIdUseCase, ViewProductByIdUseCase>();
 builder.Services.AddTransient<IEditProductUseCase, EditProductUseCase>();
+
+builder.Services.AddSingleton<IInventoryTransactionRepository, InventoryTransactionRepository>();
+builder.Services.AddTransient<IPurchaseInventoryUseCase, PurchaseInventoryUseCase>();
+
 
 
 

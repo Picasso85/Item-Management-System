@@ -17,12 +17,10 @@ namespace IMS.UseCases.Products
         {
             this.productRepository = productRepository;
         }
-
         public async Task ExecuteAsync(Product product)
         {
             //if (product == null) return;    
-            await this.productRepository.AddProductAsync(product);
-            
+            await this.productRepository.AddProductAsync(product);            
         }
     }
 }

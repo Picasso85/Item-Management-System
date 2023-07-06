@@ -17,7 +17,6 @@ namespace IMS.UseCases.Products
         {
             this.productRepository = productRepository;
         }
-
         public async Task ExecuteAsync(Product product)
         {
             await this.productRepository.UpdateProductAsync(product);
