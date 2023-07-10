@@ -6,6 +6,7 @@
         class="form-control"
         @bind-value="userInput"
         @bind-value:event="oninput"
+        
         @onkeyup="OnPressKeys"
         />
 </div>
@@ -35,7 +36,7 @@
     public string Label { get; set; } = string.Empty;
 
     [Parameter]
-    public Func<string, List<ItemViewModel>>? SearchFunction {get; set;}
+    public Func<string, Task<List<ItemViewModel>>>? SearchFunction {get; set;}
 
     [Parameter]
     public EventCallback<ItemViewModel> OnItemSelected {get; set;}
@@ -60,9 +61,7 @@
             {
                 if (this.selectedItem?.Name != _userInput)
                 {
-                    searchResults = SearchFunction(_userInput);
-
-                    this.selectedItem = null;
+                    ViewItemAsync();
                 }
 
             }
@@ -70,6 +69,17 @@
             {
                 ClearCurrentItem();
             }
+        }
+    }
+
+    private async Task ViewItemAsync()
+    {
+        if (SearchFunction != null)
+        {
+            searchResults = await SearchFunction(_userInput);
+            this.selectedItem = null;
+
+            StateHasChanged();
         }
     }
 

@@ -6,6 +6,7 @@
 @inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
 @inject IViewInventoryByIdUseCase ViewInventoryByIdUseCase
 
+@inject IJSRuntime JSRuntime
 
 <h3>Purchase Inventory</h3>
 <br/>
@@ -42,13 +43,23 @@
     </div>
 
     <br/>
-    <button type="submit" class="btn btn-primary">Purchase</button>
+    <button type="submit" class="btn btn-primary"><i class="bi bi-tags paddingIconRight"></i>Purchase</button>
 </EditForm>
 
 @code {
     private PurchaseViewModel purchaseViewModel = new PurchaseViewModel();
 
     private Inventory? selectedInventory = null;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+        {
+            JSRuntime.InvokeVoidAsync("PreventFormSubmition", "purchase-form");
+        }
+    }
 
     private async Task Purchase()
     {
@@ -65,9 +76,9 @@
 
     }
 
-    private List<ItemViewModel>? SearchInventory(string name)
+    private async Task<List<ItemViewModel>?> SearchInventory(string name)
     {
-        var list = ViewInventoriesByNameUseCase.ExecuteAsync(name).GetAwaiter().GetResult();
+        var list = await ViewInventoriesByNameUseCase.ExecuteAsync(name);
         if (list == null) return null;
 
         return list.Select(x => new ItemViewModel { Id = x.InventoryId, Name = x.InventoryName })?.ToList();
