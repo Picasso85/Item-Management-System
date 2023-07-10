@@ -18,6 +18,7 @@ builder.Services.AddServerSideBlazor();
 // lifetime management 
 builder.Services.AddSingleton<IInventoryRepository, InventoryRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<IProductTransactionRepository, ProductTransactionRepository>();
 builder.Services.AddTransient<IViewInventoriesByNameUseCase, ViewInventoriesByNameUseCase>();
 // service to fix issues (F5 - refresh - issue)...
 builder.Services.AddScoped<IViewInventoriesByNameUseCase, ViewInventoriesByNameUseCase>();
@@ -32,6 +33,7 @@ builder.Services.AddTransient<IEditProductUseCase, EditProductUseCase>();
 
 builder.Services.AddSingleton<IInventoryTransactionRepository, InventoryTransactionRepository>();
 builder.Services.AddTransient<IPurchaseInventoryUseCase, PurchaseInventoryUseCase>();
+builder.Services.AddTransient<IProduceProductUseCase, ProduceProductUseCase>();
 
 
 

@@ -3,6 +3,6 @@
     public enum InventoryTransactionType
     {
         PurchaseInventory = 1,
-        PurchaseTransaction = 2,
+        ProduceProduct = 2,
     }
 }
