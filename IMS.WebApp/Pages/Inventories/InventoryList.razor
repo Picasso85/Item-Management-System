@@ -1,16 +1,17 @@
 ﻿@page "/inventories"
 @inject NavigationManager NavigationManager
 @inject IInventoryRepository InventoryRepository
+@inject IViewInventoriesByNameUseCase ViewInventoriesByNameUseCase
 
 
 <h3>Inventory List</h3>
 <br/>
-<SearchInventoryComponent OnSearchInventory="OnInventorySearch"> 
+<SearchInventoryComponent OnSearchInventory="OnInventorySearch">
 </SearchInventoryComponent>
 <br/>
 <button type="button" class="btn btn-primary" @onclick="AddInventory"><i class="bi bi-plus-square" style="padding:0 0.5rem 0 0;"></i>Add Inventory</button>
 <br/>
-<InventoryListComponent SearchTerm="@searchTerm" ListInventories="@items"></InventoryListComponent>
+<InventoryListComponent ListInventories="@items"></InventoryListComponent>
 <PageComponent CurrentPage="OnCurrentPageChange"></PageComponent>
 
 
@@ -28,6 +29,15 @@
     private void OnInventorySearch(string searchTerm)
     {
         this.searchTerm = searchTerm;
+        if (!string.IsNullOrEmpty(this.searchTerm))
+        {
+            items = (ViewInventoriesByNameUseCase.ExecuteAsync(this.searchTerm)).Result.ToList();
+            foreach (var item in items)
+            {
+                Console.WriteLine(item.InventoryId);
+            }
+        }
+        StateHasChanged();
     }
 
     private void AddInventory()
@@ -42,14 +52,12 @@
         await result;
 
         if (result.IsCompleted)
-
         {
             items = result.Result.ToList();
             await InvokeAsync(StateHasChanged);
-
         }
     }
 
-    
+
 
 }
