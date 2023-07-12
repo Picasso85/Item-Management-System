@@ -16,9 +16,7 @@ abaut :
 5. Login and Signup system + validations
 6. real time work
 
-7. fix bugs :)
+7. fixing bugs :)
 8. learn procces in system, one way with dead end ??
 
-9. i dont like write, and speak with other ppl. ( with ppl like me hmm.... :P )
-
-10. wait for progress....
+9. wait for progress....
