@@ -1,0 +1,211 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.Plugins.EFCoreSqlServer\\IMS.Plugins.EFCoreSqlServer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj",
+        "projectName": "IMS.CoreBusiness",
+        "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj",
+        "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.Plugins.EFCoreSqlServer\\IMS.Plugins.EFCoreSqlServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.Plugins.EFCoreSqlServer\\IMS.Plugins.EFCoreSqlServer.csproj",
+        "projectName": "IMS.Plugins.EFCoreSqlServer",
+        "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.Plugins.EFCoreSqlServer\\IMS.Plugins.EFCoreSqlServer.csproj",
+        "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.Plugins.EFCoreSqlServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj": {
+                "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj"
+              },
+              "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\IMS.UseCases.csproj": {
+                "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\IMS.UseCases.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\IMS.UseCases.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\IMS.UseCases.csproj",
+        "projectName": "IMS.UseCases",
+        "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\IMS.UseCases.csproj",
+        "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.UseCases\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj": {
+                "projectPath": "C:\\Users\\paula\\Desktop\\Item-Management-System-master\\IMS.CoreBusiness\\IMS.CoreBusiness.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
