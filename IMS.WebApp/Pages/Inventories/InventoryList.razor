@@ -11,33 +11,32 @@
 <br/>
 <button type="button" class="btn btn-primary" @onclick="AddInventory"><i class="bi bi-plus-square" style="padding:0 0.5rem 0 0;"></i>Add Inventory</button>
 <br/>
-<InventoryListComponent ListInventories="@items"></InventoryListComponent>
-<PageComponent CurrentPage="OnCurrentPageChange"></PageComponent>
+<InventoryListComponent ListInventories="@Items"></InventoryListComponent>
+<PageComponent ChangeCurrentPage="OnCurrentPageChange" TotalPages="_totalPages"></PageComponent>
 
 
 @code {
 
-    private List<Inventory> items { get; set; } = new();
+    private string SearchTerm { get; set; } = string.Empty;
 
-    private string searchTerm = string.Empty;
+    private List<Inventory> Items { get; set; } = new();
+    
+    private int _totalPages;
 
     protected override async Task OnInitializedAsync()
     {
         await OnCurrentPageChange(0);
+        _totalPages = InventoryRepository.GetMaxPageCount();
     }
 
-    private void OnInventorySearch(string searchTerm)
+    private async void  OnInventorySearch(string searchTerm)
     {
-        this.searchTerm = searchTerm;
-        if (!string.IsNullOrEmpty(this.searchTerm))
-        {
-            items = (ViewInventoriesByNameUseCase.ExecuteAsync(this.searchTerm)).Result.ToList();
-            foreach (var item in items)
-            {
-                Console.WriteLine(item.InventoryId);
-            }
-        }
+        SearchTerm = searchTerm;
+        var result = (await InventoryRepository.GetInventoryItemsAsync(searchTerm)).ToList();
+        Items = InventoryRepository.GetPaginatedItems(result, 0).ToList();
+        _totalPages = result.Count / InventoryRepository.ItemsPerPage;
         StateHasChanged();
+        
     }
 
     private void AddInventory()
@@ -47,13 +46,12 @@
 
     private async Task OnCurrentPageChange(int currentPage)
     {
-        var result = InventoryRepository.GetPageByNameAsync(string.Empty, currentPage);
-
-        await result;
-
-        if (result.IsCompleted)
+        var response = InventoryRepository.GetInventoryItemsAsync(SearchTerm, currentPage);
+        await response;
+        
+        if (response.IsCompleted)
         {
-            items = result.Result.ToList();
+            Items = response.Result.ToList();
             await InvokeAsync(StateHasChanged);
         }
     }

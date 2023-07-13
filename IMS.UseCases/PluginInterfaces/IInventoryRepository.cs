@@ -11,14 +11,14 @@ namespace IMS.UseCases.PluginInterfaces
     {
         Task UpdateInventoryAsync(Inventory inventory);
         Task<Inventory> GetInventoryByIdAsync(int inventoryId);
-        Task<IEnumerable<Inventory>> GetInventoriesByNameAsync(string name);
         Task AddInventoryAsync(Inventory inventory);
         Task<IEnumerable<Inventory>> GetPageByNameAsync(string name, int currentPage);
         int GetMaxPageCount();
         int ItemsPerPage { get; }
-        
+        Task<IEnumerable<Inventory>> GetInventoryItemsAsync(string name);
+        Task<IEnumerable<Inventory>> GetInventoryItemsAsync(string searchTerm, int page);
+        IEnumerable<Inventory> GetPaginatedItems(IEnumerable<Inventory> items, int pageNumber);
 
-         
 
         //Task<bool> ExistsAsync (Inventory inventory);
     }

@@ -11,7 +11,7 @@
             var index = i;
 
             <li class="page-item">
-                <button class="btn btn-sm  @(_currentPage == index ? "btn-primary" : "btn-outline-primary")" disabled="@(index == _currentPage)" @onclick="() => GoToPage(index)">@(index + 1)</button>
+                <button class="btn btn-sm  @(CurrentPage == index ? "btn-primary" : "btn-outline-primary")" disabled="@(index == CurrentPage)" @onclick="() => GoToPage(index)">@(index + 1)</button>
             </li>
         }
         <li class="page-item">
@@ -25,51 +25,45 @@
     public int ItemsPerPage => InventoryRepository.ItemsPerPage;
 
     private int Index { get; set; }
-
-
-    [Parameter]
-
-    public List<object> Items { get; set; } = new List<object>();
-
     
 
     [Parameter]
+    public int TotalPages { get; set; }
 
-    public EventCallback<int> CurrentPage { get; set; }
+    [Parameter]
+    public EventCallback<int> ChangeCurrentPage { get; set; }
 
-    private bool CanGoNext => _currentPage < TotalPages - 1;
+    private bool CanGoNext => CurrentPage < TotalPages - 1;
 
-    private bool CanGoPrevious => _currentPage > 0;
+    private bool CanGoPrevious => CurrentPage > 0;
 
-    private int _currentPage { get; set; } = 0;
-
-    private int TotalPages => InventoryRepository.GetMaxPageCount();
+    private int CurrentPage { get; set; } = 0;
 
     private async Task GoToNextPage()
     {
-        if (_currentPage <= TotalPages - 1)
+        if (CurrentPage <= TotalPages - 1)
         {
-            _currentPage++;
+            CurrentPage++;
 
-            await CurrentPage.InvokeAsync(_currentPage);
+            await ChangeCurrentPage.InvokeAsync(CurrentPage);
         }
     }
 
     private async Task GoToPreviousPage()
     {
-        if (_currentPage > 0)
+        if (CurrentPage > 0)
         {
-            _currentPage--;
+            CurrentPage--;
 
-            await CurrentPage.InvokeAsync(_currentPage);
+            await ChangeCurrentPage.InvokeAsync(CurrentPage);
 
         }
     }
 
     private async Task GoToPage(int pageNumber)
     {
-        _currentPage = pageNumber;
-        await CurrentPage.InvokeAsync(pageNumber);
+        CurrentPage = pageNumber;
+        await ChangeCurrentPage.InvokeAsync(pageNumber);
     }
 
 }

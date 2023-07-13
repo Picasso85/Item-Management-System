@@ -18,19 +18,8 @@
 
 
 @code {
-    // [Parameter]
-    // public string SearchTerm { get; set; } = string.Empty;
 
     [Parameter]
     public List<Inventory> ListInventories { get; set; } = new List<Inventory>();
-
-    protected override async Task OnParametersSetAsync()
-    {
-        // await InvokeAsync(StateHasChanged);
-        
-        // if (!string.IsNullOrEmpty(SearchTerm))
-        // {
-        //     ListInventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(this.SearchTerm)).ToList();
-        // }
-    }
+    
 }
