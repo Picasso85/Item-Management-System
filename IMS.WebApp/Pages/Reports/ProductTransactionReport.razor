@@ -9,31 +9,31 @@
 
 <div id="printarea">
     <div class="row">
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label for="prod">Product Name</label>
             <input type="text" id="prod" class="form-control" @bind-value="prodName" />
         </div>
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label for="df">Date From</label>
             <input type="date" id="df" class="form-control" @bind-value="dateFrom" />
         </div>
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label for="dt">Date To</label>
             <input type="date" id="dt" class="form-control" @bind-value="dateTo" />
         </div>
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label for="at">Activity Type</label>
             <select id="at" class="form-control" @bind="activityTypeId">
-                <option value="0">Make a choose</option>
+                <option value="0">Make a choice</option>
                 <option value="1">Produce Product</option>
                 <option value="2">Sell Product</option>
             </select>
         </div>
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label>&nbsp;</label>
             <button type="button" class="btn-success form-control" @onclick="SearchProducts"><i class="bi bi-search paddingIconRight"></i>Search</button>
         </div>
-        <div class="col-2 col-sm-2">
+        <div class="col">
             <label>&nbsp;</label>
             <button type="button" class="btn btn-primary form-control" @onclick="PrintReport"><i class="bi bi-printer paddingIconRight"></i>Print</button>
         </div>
@@ -50,8 +50,8 @@
                     <th>Qty Before</th>
                     <th>Qty After</th>
                     <th>Unit Price</th>
-                    <th>SO#</th>
-                    <th>Production#</th>
+                    <th>SO</th>
+                    <th>Production</th>
                     <th>Done By</th>
                 </tr>
             </thead>

@@ -1,4 +1,5 @@
 using IMS.Plugins.InMemory;
+
 using IMS.UseCases.Activities;
 using IMS.UseCases.Activities.Interfaces;
 using IMS.UseCases.Inventories;
@@ -11,8 +12,12 @@ using IMS.UseCases.Reports.Interfaces;
 using IMS.WebApp.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
