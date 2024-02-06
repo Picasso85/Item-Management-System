@@ -1,7 +1,7 @@
 ﻿<div class="input-group">
     <input type="text"
            class="form-control"
-           placeholder="Type inventory name to search" @bind-value="inventoryNameToSearch" />
+           placeholder="Type inventory name to search" @bind-value="SearchTerm" />
     <button type="button" class="btn-success input-group-text " @onclick="OnSearch">
         <i class="bi bi-search paddingIconRight"></i>Search
     </button>
@@ -9,14 +9,14 @@
 
 @code {
 
-    private string inventoryNameToSearch = string.Empty;
-
+    public string SearchTerm { get; set; } = string.Empty;
+    
     [Parameter]
     public EventCallback<string> OnSearchInventory { get; set; }
 
     private void OnSearch()
     {
-        OnSearchInventory.InvokeAsync(inventoryNameToSearch);
+        OnSearchInventory.InvokeAsync(SearchTerm);
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using IMS.CoreBusiness;
+﻿using System.Collections;
+using IMS.CoreBusiness;
 using IMS.UseCases.PluginInterfaces;
 
 namespace IMS.Plugins.InMemory
@@ -69,13 +70,7 @@ namespace IMS.Plugins.InMemory
 
             return Task.CompletedTask;
         }
-
-        public async Task<IEnumerable<Inventory>> GetInventoriesByNameAsync(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name)) return await Task.FromResult(_inventories);
-
-            return _inventories.Where(x => x.InventoryName.Contains(name, StringComparison.OrdinalIgnoreCase));
-        }
+        
 
         public async Task<Inventory> GetInventoryByIdAsync(int inventoryId)
         {
@@ -108,6 +103,20 @@ namespace IMS.Plugins.InMemory
             return Task.CompletedTask;
         }
 
+        public async Task<IEnumerable<Inventory>> GetInventoryItemsAsync(string searchTerm, int page)
+        {
+            var searchResults =  await GetInventoryItemsAsync(searchTerm);
+            var paginatedSearchResults = GetPaginatedItems(searchResults, page);
+            return paginatedSearchResults;
+        }
+        
+        public async Task<IEnumerable<Inventory>> GetInventoryItemsAsync(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm)) return await Task.FromResult(_inventories);
+
+            return _inventories.Where(x => x.InventoryName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase));
+        }
+
         public async Task<IEnumerable<Inventory>> GetPageByNameAsync(string name, int page = 0)
         {
 
@@ -130,33 +139,15 @@ namespace IMS.Plugins.InMemory
             }
         }
 
+        public IEnumerable<Inventory> GetPaginatedItems(IEnumerable<Inventory> items, int pageNumber)
+        {
+            return items.Skip(pageNumber * ItemsPerPage).Take(ItemsPerPage);
+        }
+
         public int GetMaxPageCount()
         {
             return _inventories.Count / ItemsPerPage;
         }
-
-        public class Pagination
-        {
-            public int ItemsPerPage { get; private set; } = 10;
-
-            public void SetItemsPerPage(int value)
-            {
-                ItemsPerPage = value;
-            }
-        }
-
-        //public int getmaxpagecount(string searchquery = "")
-        //{
-        //    int maxpages = getmaxpagecount();
-        //    if (string.isnullorwhitespace(searchquery))
-        //    {
-        //        return _inventories.count / itemsperpage;
-        //    }
-        //    else
-        //    {
-        //        int matchingitemcount = _inventories.count(inventory => inventory.contains(searchquery));
-        //        return matchingitemcount / itemsperpage;
-        //    }
-        //}
+        
     }
 }
