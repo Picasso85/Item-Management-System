@@ -1,9 +1,9 @@
-i like comments but i dont like write comments
+
 :P just work and progress..  
 
-app about inventory system plus some extra stuff :P
+app about inventory system, for small logistic company, plus some extra stuff.
 
-6-12 tutorials in one...
+just for practic c#..
 
 abaut :
 
@@ -17,6 +17,6 @@ abaut :
 6. real time work
 
 7. fixing bugs :)
-8. learn procces in system, one way with dead end ??
+8. learn procces...
 
 9. wait for progress....
